@@ -7,7 +7,8 @@ const site = defineCollection({
     subtitle: z.string(),
     description: z.string(),
     ctaEmail: z.string().email(),
-    image: z.string().url()
+    image: z.string().url(),
+    favicon: z.string().url()
   })
 });
 

@@ -5,7 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const entry = await getEntry("site", "home");
 if (!entry) throw new Error("Missing content entry: site/home");
 
-const { title, subtitle, description, ctaEmail, image } = entry.data;
+const { title, subtitle, description, ctaEmail, image, favicon } = entry.data;
 const keywords =
   "SDL.Life, Scottsdale life domain for sale, luxury lifestyle domain Scottsdale, wellness domain Scottsdale, 55+ living Scottsdale, prosperity domain Arizona, premium .life domain";
 ---
@@ -14,6 +14,7 @@ const keywords =
   title="SDL.Life | Premium Domain for Luxury Living and Prosperity in Scottsdale, AZ"
   description={description}
   image={image}
+  favicon={favicon}
   keywords={keywords}
 >
   <nav class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
