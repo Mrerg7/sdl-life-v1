@@ -5,11 +5,11 @@ interface Props {
   title: string;
   description: string;
   image: string;
+  keywords?: string;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, keywords } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const ogTitle = `${title} | Premium Domain Acquisition`;
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -36,14 +36,15 @@ const websiteSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{ogTitle}</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="sdl.life" />
-    <meta property="og:title" content={ogTitle} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={image} />
@@ -51,7 +52,7 @@ const websiteSchema = {
     <meta property="og:image:alt" content="sdl.life premium domain acquisition" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 

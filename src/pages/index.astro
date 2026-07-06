@@ -6,63 +6,327 @@ const entry = await getEntry("site", "home");
 if (!entry) throw new Error("Missing content entry: site/home");
 
 const { title, subtitle, description, ctaEmail, image } = entry.data;
+const keywords =
+  "SDL.Life, Scottsdale life domain for sale, luxury lifestyle domain Scottsdale, wellness domain Scottsdale, 55+ living Scottsdale, prosperity domain Arizona, premium .life domain";
 ---
 
-<BaseLayout title={title} description={description} image={image}>
-  <main class="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-12 md:px-10">
-    <header class="mb-16">
-      <p class="mb-4 inline-flex rounded-full border border-cyan-400/40 bg-cyan-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-200">
-        Cloudflare Global Edge
-      </p>
-      <h1 class="text-balance text-5xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl">
-        {title}
-      </h1>
-      <p class="mt-4 max-w-3xl text-lg text-slate-300">{subtitle}</p>
-      <p class="mt-4 max-w-3xl text-slate-400">{description}</p>
-    </header>
-
-    <section class="grid gap-8 rounded-3xl border border-slate-800 bg-slate-900/50 p-6 md:grid-cols-[1.1fr_1fr] md:p-8">
-      <img
-        src={image}
-        alt="sdl.life representative visual delivered by Cloudflare Images"
-        loading="eager"
-        fetchpriority="high"
-        class="h-full max-h-[420px] w-full rounded-2xl border border-slate-700 object-cover"
-      />
-      <div class="flex flex-col justify-between">
-        <div>
-          <h2 class="text-2xl font-semibold text-white md:text-3xl">Acquire a high-signal digital asset.</h2>
-          <p class="mt-4 text-slate-300">
-            Built as an Astro static site for Workers Static Assets, this page is globally distributed, fast to cache, and ready for immediate domain-buyer outreach.
-          </p>
-          <ul class="mt-6 space-y-2 text-sm text-slate-300">
-            <li>Static output for maximum cacheability and minimal runtime risk.</li>
-            <li>Cloudflare Images CDN URL integrated for hero and social sharing.</li>
-            <li>Structured data, OG, Twitter, sitemap, and robots configured.</li>
-          </ul>
+<BaseLayout
+  title="SDL.Life | Premium Domain for Luxury Living and Prosperity in Scottsdale, AZ"
+  description={description}
+  image={image}
+  keywords={keywords}
+>
+  <nav class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex h-20 items-center justify-between">
+        <div class="flex items-center gap-x-3">
+          <div class="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-900">
+            <span class="text-2xl font-bold tracking-tighter text-white">SDL</span>
+          </div>
+          <div class="text-xl font-semibold tracking-tighter text-slate-900">
+            sdl<span class="text-amber-700">.</span>life
+          </div>
         </div>
-        <a
-          href={`mailto:${ctaEmail}?subject=SDL.Life%20Acquisition%20Inquiry`}
-          class="mt-8 inline-flex w-fit items-center justify-center rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold uppercase tracking-wide text-slate-950 transition hover:bg-cyan-300"
-        >
-          Inquire for Acquisition
-        </a>
+
+        <div class="hidden items-center gap-x-8 text-sm font-medium md:flex">
+          <a href="#why" class="text-slate-600 transition hover:text-amber-700">Why This Domain</a>
+          <a href="#perfect-for" class="text-slate-600 transition hover:text-amber-700">Perfect For</a>
+          <a href="#facts" class="text-slate-600 transition hover:text-amber-700">Scottsdale Life</a>
+          <a href="#inquire" class="text-slate-600 transition hover:text-amber-700">Inquire</a>
+        </div>
+
+        <div class="flex items-center gap-x-3">
+          <a
+            href="https://sdl.contact"
+            target="_blank"
+            rel="noreferrer"
+            class="hidden rounded-3xl border border-slate-300 px-4 py-2 text-xs font-medium text-slate-600 transition hover:bg-slate-100 md:inline"
+          >
+            SDL Portfolio
+          </a>
+          <a
+            href={`mailto:${ctaEmail}?subject=SDL.Life%20Acquisition%20Inquiry`}
+            class="rounded-3xl bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-black"
+          >
+            Make an Offer
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative flex min-h-[620px] items-center overflow-hidden bg-slate-950 md:min-h-[680px]">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style={`background-image: linear-gradient(to right, rgb(2 6 23 / 0.96), rgb(2 6 23 / 0.86), rgb(2 6 23 / 0.72)), url('${image}')`}
+    ></div>
+
+    <div class="relative mx-auto max-w-5xl px-6 pt-8 md:pt-0">
+      <div class="max-w-3xl">
+        <div class="mb-8 inline-flex items-center gap-x-2 rounded-3xl border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
+          <div class="h-1.5 w-1.5 rounded-full bg-emerald-400"></div>
+          <span class="text-xs font-semibold tracking-[1.5px] text-white/90">
+            PREMIUM .LIFE DOMAIN • SCOTTSDALE LUXURY LIVING
+          </span>
+        </div>
+
+        <h1 class="text-white">
+          <span class="domain-name block font-bold tracking-tighter">sdl.life</span>
+        </h1>
+
+        <p class="mt-4 max-w-lg text-2xl tracking-tight text-white/90">
+          The premium domain for luxury living,<br />wellness & prosperity in Scottsdale, Arizona.
+        </p>
+
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a
+            href={`mailto:${ctaEmail}?subject=SDL.Life%20Acquisition%20Inquiry`}
+            class="rounded-3xl bg-white px-10 py-4 text-base font-semibold text-slate-900 shadow-xl transition hover:bg-amber-50"
+          >
+            Inquire to Purchase
+          </a>
+          <a
+            href="#facts"
+            class="rounded-3xl border border-white/30 px-8 py-4 text-base font-semibold text-white transition hover:bg-white/10"
+          >
+            Explore Scottsdale Life
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center gap-x-6 text-xs text-white/60">
+          <div>Short • Memorable • Aspirational</div>
+          <div class="h-3 w-px bg-white/30"></div>
+          <div>Wellness • Prosperity • Desert Luxury</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="border-b border-slate-200 bg-white">
+    <div class="mx-auto max-w-5xl px-6 py-5">
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm md:justify-between md:text-left">
+        <div class="flex items-center gap-x-2">
+          <span class="font-medium text-emerald-600">Ranked #2 Best Place to Retire in America</span>
+          <span class="text-slate-400">(WalletHub 2025)</span>
+        </div>
+        <div class="hidden text-slate-300 md:block">•</div>
+        <div class="text-slate-600">High income • World-class wellness • Vibrant active adult lifestyle</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="bg-slate-50 text-slate-800">
+    <section class="mx-auto max-w-5xl px-6 pb-12 pt-16" id="why">
+      <div class="max-w-2xl">
+        <div class="mb-3 text-xs font-semibold uppercase tracking-[2px] text-amber-700">The Opportunity</div>
+        <h2 class="heading-serif text-5xl font-semibold tracking-tighter">
+          Own the definitive domain<br />for the good life in Scottsdale.
+        </h2>
+        <p class="mt-5 text-lg text-slate-600">
+          SDL.Life is short, elegant, instantly memorable, and perfectly positioned to represent
+          luxury living, wellness, longevity, and prosperity in one of America’s most desirable desert cities.
+          It delivers powerful branding for anyone building in the lifestyle, wellness, real estate,
+          or active adult space tied to Scottsdale’s exceptional quality of life.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        <div class="value-card rounded-3xl border border-slate-200 bg-white p-7">
+          <div class="mb-3 text-xs font-semibold tracking-widest text-amber-700">BRAND POWER</div>
+          <div class="text-xl font-semibold tracking-tight">Instant authority & aspiration</div>
+          <p class="mt-3 text-sm text-slate-600">
+            SDL.Life clearly evokes Scottsdale and the aspirational good life. Short, premium, and emotionally resonant.
+          </p>
+        </div>
+        <div class="value-card rounded-3xl border border-slate-200 bg-white p-7">
+          <div class="mb-3 text-xs font-semibold tracking-widest text-amber-700">MARKET FIT</div>
+          <div class="text-xl font-semibold tracking-tight">Scottsdale’s luxury lifestyle</div>
+          <p class="mt-3 text-sm text-slate-600">
+            Scottsdale consistently ranks among the best places to live and retire in the U.S., with strong wellness and luxury positioning.
+          </p>
+        </div>
+        <div class="value-card rounded-3xl border border-slate-200 bg-white p-7">
+          <div class="mb-3 text-xs font-semibold tracking-widest text-amber-700">GROWTH POTENTIAL</div>
+          <div class="text-xl font-semibold tracking-tight">Wellness, longevity & prosperity</div>
+          <p class="mt-3 text-sm text-slate-600">
+            Strong demand across active adult living, wellness tourism, luxury real estate, and premium lifestyle media.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-slate-100 bg-white py-16" id="perfect-for">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-10 max-w-xl">
+          <div class="mb-3 text-xs font-semibold uppercase tracking-[2px] text-amber-700">Ideal Use Cases</div>
+          <h2 class="text-4xl font-semibold tracking-tighter">Built for brands shaping the good life.</h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-3xl border border-slate-200 bg-white p-7">
+            <div class="mb-4 text-3xl">Wellness</div>
+            <div class="text-xl font-semibold tracking-tight">Longevity & Health</div>
+            <p class="mt-3 text-sm text-slate-600">
+              A strong fit for longevity clinics, wellness platforms, biohacking brands, and health optimization communities.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-7">
+            <div class="mb-4 text-3xl">55+</div>
+            <div class="text-xl font-semibold tracking-tight">Active Adult Living</div>
+            <p class="mt-3 text-sm text-slate-600">
+              Ideal for premium retirement lifestyle brands and Scottsdale-focused active adult living portals.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-7">
+            <div class="mb-4 text-3xl">Luxury</div>
+            <div class="text-xl font-semibold tracking-tight">Real Estate & Lifestyle</div>
+            <p class="mt-3 text-sm text-slate-600">
+              Well suited for high-end real estate positioning tied to desert living, golf, and wellness estates.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-7">
+            <div class="mb-4 text-3xl">Media</div>
+            <div class="text-xl font-semibold tracking-tight">Lifestyle Brand or Publication</div>
+            <p class="mt-3 text-sm text-slate-600">
+              Supports a magazine, editorial property, or media brand built around Scottsdale luxury and culture.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-7">
+            <div class="mb-4 text-3xl">Prosperity</div>
+            <div class="text-xl font-semibold tracking-tight">Coaching & Personal Growth</div>
+            <p class="mt-3 text-sm text-slate-600">
+              A premium base for coaching, mindset, and prosperity-focused brands seeking aspirational positioning.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-7">
+            <div class="mb-4 text-3xl">Destination</div>
+            <div class="text-xl font-semibold tracking-tight">Hospitality Experience</div>
+            <p class="mt-3 text-sm text-slate-600">
+              Strong naming for resorts, clubs, and curated lifestyle experiences centered on the Scottsdale market.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-5xl px-6 py-16" id="facts">
+      <div class="mb-10 max-w-2xl">
+        <div class="mb-3 text-xs font-semibold uppercase tracking-[2px] text-amber-700">The Market</div>
+        <h2 class="text-4xl font-semibold tracking-tighter">
+          Scottsdale offers one of America’s strongest combinations of prosperity, wellness, and lifestyle.
+        </h2>
+        <p class="mt-4 text-slate-600">
+          With an affluent population, strong healthcare access, destination appeal, and a culture of active outdoor living,
+          Scottsdale represents the aspirational good life in the American Southwest.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="fact-card rounded-3xl border border-slate-200 bg-white p-7">
+          <div class="mb-2 text-xs font-semibold tracking-widest text-amber-700">PROSPERITY</div>
+          <div class="text-lg font-semibold">High Income & Education</div>
+          <div class="mt-4 space-y-3 text-sm">
+            <div class="flex justify-between gap-4"><span>Median Household Income</span><span class="font-semibold">$110,886-$112,344</span></div>
+            <div class="flex justify-between gap-4"><span>Bachelor’s Degree or Higher</span><span class="font-semibold">56-61.9%</span></div>
+            <div class="flex justify-between gap-4"><span>Median Home Value</span><span class="font-semibold">$737K-$860K+</span></div>
+          </div>
+        </div>
+        <div class="fact-card rounded-3xl border border-slate-200 bg-white p-7">
+          <div class="mb-2 text-xs font-semibold tracking-widest text-amber-700">RETIREMENT</div>
+          <div class="text-lg font-semibold">#2 Best Place to Retire in America</div>
+          <p class="mt-3 text-sm text-slate-600">
+            WalletHub 2025 cited Scottsdale for retiree activities, golf, arts, weather, and tax advantages.
+          </p>
+        </div>
+        <div class="fact-card rounded-3xl border border-slate-200 bg-white p-7">
+          <div class="mb-2 text-xs font-semibold tracking-widest text-amber-700">WELLNESS</div>
+          <div class="text-lg font-semibold">Desert Luxury & Longevity</div>
+          <p class="mt-3 text-sm text-slate-600">
+            World-class spas, golf communities, Sonoran Desert recreation, and Mayo Clinic access support a high-end wellness narrative.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-8 max-w-3xl text-xs text-slate-500">
+        Sources: U.S. Census Bureau, WalletHub 2025 Best Places to Retire study, local real estate reporting, and Scottsdale economic development data. Figures are approximate and subject to change.
+      </p>
+    </section>
+
+    <section class="bg-slate-900 py-16" id="inquire">
+      <div class="mx-auto max-w-3xl px-6">
+        <div class="mb-10 text-center">
+          <div class="mb-4 inline rounded-3xl bg-white/10 px-4 py-1 text-xs font-medium tracking-[1.5px] text-white">
+            SERIOUS INQUIRIES ONLY
+          </div>
+          <h2 class="text-4xl font-semibold tracking-tighter text-white md:text-5xl">Ready to own SDL.Life?</h2>
+          <p class="mx-auto mt-4 max-w-md text-white/70">
+            Premium lifestyle domains that capture aspirational living in top markets move quickly.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-8 shadow-xl md:p-10">
+          <div class="grid gap-6 md:grid-cols-2">
+            <div>
+              <div class="mb-2 text-xs font-semibold tracking-wider text-slate-500">YOUR NAME</div>
+              <div class="rounded-2xl border border-slate-200 px-5 py-3.5 text-sm text-slate-500">Morgan Ellis</div>
+            </div>
+            <div>
+              <div class="mb-2 text-xs font-semibold tracking-wider text-slate-500">EMAIL ADDRESS</div>
+              <div class="rounded-2xl border border-slate-200 px-5 py-3.5 text-sm text-slate-500">you@yourbrand.com</div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div class="mb-2 text-xs font-semibold tracking-wider text-slate-500">INTENDED USE FOR SDL.LIFE</div>
+            <div class="rounded-2xl border border-slate-200 px-5 py-3.5 text-sm text-slate-500">
+              Wellness, active adult living, real estate, media, or hospitality.
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <a
+              href={`mailto:${ctaEmail}?subject=SDL.Life%20Acquisition%20Inquiry&body=Name:%20%0AEmail:%20%0AIntended%20use:%20%0AOffer:%20%0ADetails:%20`}
+              class="block w-full rounded-3xl bg-slate-900 py-4 text-center text-base font-semibold tracking-wide text-white transition hover:bg-black"
+            >
+              SUBMIT INQUIRY
+            </a>
+          </div>
+
+          <p class="mt-5 text-center text-xs text-slate-400">
+            We typically respond within 24-48 hours. All inquiries are confidential.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-5xl px-6 py-16 text-center">
+      <div class="mx-auto max-w-lg">
+        <p class="text-sm text-slate-500">Part of the SDL family of premium Scottsdale and Phoenix-focused domains</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+          <a href="https://sdl.contact" target="_blank" rel="noreferrer" class="font-medium text-amber-700 hover:text-amber-800">sdl.contact</a>
+          <a href="https://sdl.hair" target="_blank" rel="noreferrer" class="font-medium text-amber-700 hover:text-amber-800">sdl.hair</a>
+          <a href="https://phx.beauty" target="_blank" rel="noreferrer" class="font-medium text-amber-700 hover:text-amber-800">phx.beauty</a>
+          <a href="https://sdldwntwn.com" target="_blank" rel="noreferrer" class="font-medium text-amber-700 hover:text-amber-800">sdldwntwn.com</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-slate-800 bg-slate-950/95">
-    <div class="mx-auto grid max-w-6xl gap-8 px-6 py-10 md:grid-cols-[1.15fr_1fr] md:px-10">
+  <footer class="border-t border-slate-100 bg-white py-10 text-slate-800">
+    <div class="mx-auto grid max-w-5xl gap-6 px-6 md:grid-cols-[1.2fr_1fr]">
       <div>
-        <h3 class="text-xl font-semibold text-white">Domain Available for Acquisition</h3>
-        <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-          Strategic buyers, portfolio operators, and category leaders can route direct acquisition interest to
-          <a class="font-medium text-cyan-300 hover:text-cyan-200" href={`mailto:${ctaEmail}`}> {ctaEmail}</a>.
-          Engagements are handled privately and evaluated on buyer fit, execution capability, and long-term brand intent.
+        <h3 class="text-lg font-semibold tracking-tight text-slate-900">Domain available for acquisition</h3>
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          For sophisticated domain buyers, acquisition inquiries for <span class="font-medium text-slate-900">sdl.life</span>
+          should be routed directly to
+          <a class="font-medium text-amber-700 hover:text-amber-800" href={`mailto:${ctaEmail}`}>{ctaEmail}</a>.
+          This is a premium digital asset intended for serious, well-capitalized buyers only.
         </p>
       </div>
-      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs leading-5 text-slate-400">
-        This website is for demonstration and informational purposes only. It does not constitute an offer of services, a commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific technologies are based on publicly available information as of the date shown and are subject to change.
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs leading-5 text-slate-500">
+        This website is for demonstration and informational purposes only. It does not constitute an offer of services,
+        a commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific
+        technologies are based on publicly available information as of the date shown and are subject to change.
       </div>
     </div>
   </footer>
