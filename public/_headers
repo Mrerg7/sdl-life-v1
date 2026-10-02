@@ -1,10 +1,8 @@
-/*
-  Cloudflare Workers Static Assets – HTTP headers
-  Free-plan compatible. Cached + hardened.
-*/
+# sdl.life — Cloudflare Workers Static Assets headers (free plan)
+# Caching + hardening.
+
 /sitemap*.xml
   Cache-Control: public, max-age=3600
-  Content-Type: application/xml; charset=utf-8
 /robots.txt
   Cache-Control: public, max-age=86400
 /*.css
@@ -13,7 +11,6 @@
   Cache-Control: public, max-age=31536000, immutable
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
-  Content-Type: font/woff2
 /*.png
   Cache-Control: public, max-age=31536000, immutable
 /*.jpg
@@ -22,7 +19,6 @@
   Cache-Control: public, max-age=31536000, immutable
 /manifest.webmanifest
   Cache-Control: public, max-age=86400
-  Content-Type: application/manifest+json
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
