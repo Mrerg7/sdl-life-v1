@@ -7,28 +7,130 @@ interface Props {
   image: string;
   favicon: string;
   keywords?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image, favicon, keywords } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const {
+  title,
+  description,
+  image,
+  favicon,
+  keywords,
+  canonicalPath = Astro.url.pathname,
+  noindex = false,
+} = Astro.props;
+
+const site = "https://sdl.life";
+const canonicalUrl = new URL(canonicalPath, site).toString();
+const ctaEmail = "sales@desertrich.com";
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${site}/#organization`,
   name: "SDL Domains",
-  url: "https://sdl.life",
-  email: "sales@desertrich.com",
-  sameAs: ["https://sdl.life"]
+  url: site,
+  email: ctaEmail,
+  areaServed: "Scottsdale, Arizona",
+  sameAs: [
+    "https://sdl.contact",
+    "https://sdl.hair",
+    "https://phx.beauty",
+    "https://sdldwntwn.com",
+  ],
 };
+
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${site}/#website`,
   name: "sdl.life",
-  url: "https://sdl.life",
+  url: site,
   description,
-  potentialAction: {
-    "@type": "CommunicateAction",
-    target: "mailto:sales@desertrich.com"
-  }
+  publisher: { "@id": `${site}/#organization` },
+};
+
+// Product/Offer schema — the core domain-for-sale entity (price on request)
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": `${site}/#product`,
+  name: "sdl.life",
+  description:
+    "Premium .life domain for luxury living, wellness, longevity, prosperity and active-adult lifestyle brands in Scottsdale, Arizona. Available for acquisition via confidential inquiry with secure escrow transfer.",
+  brand: { "@type": "Brand", name: "SDL Domains" },
+  category: "Domain Name > Premium .life Domain",
+  image: [image],
+  url: canonicalUrl,
+  offers: {
+    "@type": "Offer",
+    "@id": `${site}/#offer`,
+    url: canonicalUrl,
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    seller: { "@id": `${site}/#organization` },
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "USD",
+      name: "Price on request — serious offers from $25,000",
+    },
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is sdl.life for sale?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. sdl.life is available for acquisition by serious, well-capitalized buyers via confidential inquiry to sales@desertrich.com. Transfer is completed through a licensed escrow service.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does sdl.life cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pricing is on request. Serious offers start from $25,000. Submit your intended use and offer for a confidential response within 24–48 hours.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is the domain transferred securely?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We use Escrow.com (or equivalent licensed escrow) with registrar push, Auth/EPP code, and full WHOIS transfer. Funds are released only after you confirm control of the domain.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is sdl.life best used for?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Wellness and longevity brands, 55+ active-adult living portals, luxury Scottsdale real estate, lifestyle media, coaching/prosperity brands, and hospitality experiences.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: site + "/" },
+    { "@type": "ListItem", position: 2, name: "FAQ", item: site + "/faq/" },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Domain Valuation Guide",
+      item: site + "/valuation-guide/",
+    },
+  ],
 };
 ---
 
@@ -36,34 +138,63 @@ const websiteSchema = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
-    <meta name="robots" content="index,follow" />
-    <meta name="google-site-verification" content="GBqnKtraaAgssIUJwKkCe68oWXYwQgnx5RIp3sPSn9I" />
+    <meta name="author" content="SDL Domains" />
+    <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
     <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Performance: preconnect + font display swap (CSS handles swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://imagedelivery.net" crossorigin />
+    <link rel="dns-prefetch" href="https://imagedelivery.net" />
+    <link rel="preload" as="image" href={image} fetchpriority="high" />
+
     <link rel="icon" href={favicon} type="image/png" />
     <link rel="apple-touch-icon" href={favicon} />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="sdl.life" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={image} />
     <meta property="og:image:secure_url" content={image} />
-    <meta property="og:image:alt" content="sdl.life premium domain acquisition" />
+    <meta property="og:image:alt" content="sdl.life — premium domain for Scottsdale luxury living" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
+    <!-- Structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+    <!-- Cloudflare Web Analytics (free, privacy-first). Replace token when available. -->
+    <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_TOKEN"}'></script> -->
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-slate-900"
+    >
+      Skip to content
+    </a>
     <slot />
   </body>
 </html>

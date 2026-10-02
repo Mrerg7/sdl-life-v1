@@ -1,0 +1,17 @@
+{
+  "name": "sdl.life — Premium Domain for Sale",
+  "short_name": "sdl.life",
+  "description": "sdl.life — premium .life domain for luxury living, wellness & prosperity in Scottsdale, AZ. Available for acquisition.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/163edde2-2b98-463b-6627-00612f099e00/public",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
